@@ -10,8 +10,26 @@ services:
     container_name: django-blog-app
     ports:
       - "8080:8080"
+    env_file:
+      - .env
     volumes:
       - ./:/app/
+    depends_on:
+      - postgres
+
+# PostgreSQL Database
+  postgres:
+    image: postgres:13-alpine
+    container_name: django-blog-db
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+volumes:
+  pgdata:
 
 networks:
   default:
