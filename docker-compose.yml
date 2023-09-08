@@ -7,7 +7,7 @@ services:
     build:
       context: .
       dockerfile: docker/app/Dockerfile
-    container_name: dj-docker-blog-app
+    container_name: django-blog-app
     ports:
       - "8080:8080"
     volumes:
