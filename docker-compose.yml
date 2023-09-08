@@ -1,0 +1,18 @@
+# docker-compose.yml
+version: '3'
+
+services:
+  # Django application
+  app:
+    build:
+      context: .
+      dockerfile: docker/app/Dockerfile
+    container_name: dj-docker-blog-app
+    ports:
+      - "8080:8080"
+    volumes:
+      - ./:/app/
+
+networks:
+  default:
+    name: django-blog-network
